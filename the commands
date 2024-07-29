@@ -1,0 +1,95 @@
+Top 10 Kali Linux Commands for Information Gathering:-
+Information gathering is a crucial phase in penetration testing and security assessments. Below are the top 10 tools I use in Kali Linux for information gathering, along with detailed examples and explanations.
+
+1.Nmap
+Nmap (Network Mapper) is a powerful network discovery and security auditing tool. It can be used to discover hosts and services on a computer network, thus creating a "map" of the network.
+Example:
+nmap -sP 192.168.1.0/24
+Explanation:
+- `-sP`: Ping scan - only checks to see if hosts are up.
+- `192.168.1.0/24`: Scans all IP addresses in the subnet 192.168.1.0 to 192.168.1.255.
+
+More advanced usage:
+nmap -A -T4 -p 1-65535 192.168.1.1
+- `-A`: Enables OS detection, version detection, script scanning, and traceroute.
+- `-T4`: Aggressive timing template.
+- `-p 1-65535`: Scans all 65535 ports.
+
+2.Whois
+Whois is a query and response protocol that is widely used for querying databases that store registered users or assignees of an Internet resource, such as a domain name or an IP address block.
+Example:
+whois example.com
+Explanation:
+example.com: Replace with the domain name you want to query to get information about its registrant.
+
+3. Dnsenum
+Dnsenum is a multithreaded Perl script to enumerate DNS information of a domain and to discover non-contiguous IP blocks.
+Example:
+bash
+dnsenum example.com
+Explanation:
+example.com: Replace with the domain name you want to enumerate to get DNS information.
+
+4.TheHarvester
+TheHarvester is used for gathering emails, subdomains, hosts, employee names, open ports, and banners from different public sources like search engines, PGP key servers, and SHODAN.
+Example:
+theHarvester -d example.com -l 500 -b google
+Explanation:
+- `-d example.com`: Specifies the domain to search.
+- `-l 500`: Limits the number of results to 500.
+- `-b google`: Uses Google as the search engine.
+
+5.Nikto
+Nikto is an open-source web server scanner which performs comprehensive tests against web servers for multiple items, including over 6700 potentially dangerous files/CGIs, versions on over 1250 servers, and version-specific problems on over 270 servers.
+Example:
+nikto -h http://example.com
+Explanation:
+-h http://example.com`: Specifies the target URL.
+
+6.Metasploit
+Metasploit is one of the most popular penetration testing frameworks. It provides the infrastructure, content, and tools to perform comprehensive penetration tests and extensive security auditing.
+Example:
+msfconsole
+use auxiliary/scanner/portscan/tcp
+set RHOSTS 192.168.1.0/24
+run
+Explanation:
+- `msfconsole`: Starts the Metasploit console.
+- `use auxiliary/scanner/portscan/tcp`: Uses the TCP port scanner module.
+- `set RHOSTS 192.168.1.0/24`: Sets the target range.
+- `run`: Executes the module.
+
+7.Maltego
+Maltego is a program that can be used to determine the relationships and real-world links between people, groups of people (social networks), companies, websites, internet infrastructure, phrases, documents, and files, and many more.
+Example:
+maltego
+Explanation:
+- `maltego`: Starts the Maltego GUI application.
+
+8.Shodan
+Shodan is a search engine for Internet-connected devices. It allows you to find specific types of computers (webcams, routers, servers, etc.) using various filters.
+Example:
+shodan init YOUR_API_KEY
+shodan search apache
+Explanation:
+- `shodan init YOUR_API_KEY`: Initializes Shodan with your API key.
+- `shodan search apache`: Searches for devices running Apache.
+
+9.SpiderFoot
+SpiderFoot is an open-source intelligence automation tool. It automates the process of gathering intelligence about a given target, which can be a domain name, hostname, IP address, subnet, ASN, or even an email address.
+Example:
+spiderfoot -s example.com
+Explanation:
+- `-s example.com`: Specifies the target domain to gather intelligence on.
+
+10.Netcat
+Netcat is a computer networking utility for reading from and writing to network connections using the TCP or UDP protocols. It is designed to be a dependable back-end tool that can be used directly or easily driven by other programs and scripts.
+Example:
+nc -v -z -w 1 192.168.1.1 1-1000
+Explanation:
+- `-v`: Verbose mode.
+- `-z`: Zero-I/O mode, used for scanning.
+- `-w 1`: Timeout for connections.
+- `192.168.1.1 1-1000`: Scans ports 1 through 1000 on the host 192.168.1.1.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+I hope you benefited from this :)
